@@ -10,7 +10,7 @@
     background-color: #930007;
   }
   .貫通,
-  .重装備 {
+  .重装甲 {
     background-color: #bb8800;
   }
   .神秘,
