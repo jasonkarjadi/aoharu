@@ -20,7 +20,7 @@ export const load = async ({ locals }) => {
       WHERE terrain = '市街地戦' GROUP BY uta.name, uta.outfit) city
     ON unit.name = city.name AND unit.outfit = city.outfit, 
     LATERAL (SELECT position FROM "weapon_type" WHERE student.weapon_type = weapon_type.name)
-    ORDER BY unit.release_date DESC, student.school ASC`
+    ORDER BY unit.release_date DESC, student.school ASC, student.club ASC`
   );
   await client.end();
 

@@ -10,16 +10,16 @@
 <div class="mx-4">
   <div class="h-20 mt-4 bg-slate-400"></div>
   <!-- filter -->
-  <div class="overflow-x-auto my-4 bg-slate-100">
+  <div class="overflow-x-auto mt-4 bg-slate-100">
     <table class="border border-black w-max text-sm">
       <thead class="sticky top-0">
-        <tr class="*:border *:border-black *:h-8 *:bg-slate-100">
-          <th colspan="2">生徒</th>
+        <tr class="*:border *:border-black *:h-8 *:bg-slate-300">
+          <th colspan="3">生徒</th>
           <th>学校</th>
           <th>部活</th>
           <th>役割</th>
-          <th class="w-16">攻撃</th>
-          <th class="w-16">防御</th>
+          <th class="w-20">攻撃</th>
+          <th class="w-20">防御</th>
           <th>クラス</th>
           <th class="px-2">武器</th>
           <th class="px-2">遮蔽</th>
@@ -39,30 +39,27 @@
       </thead>
       <tbody class="text-center">
         {#each rows as unit (unit.name + unit.outfit)}
-          <tr class="*:border-black">
-            <td class="border-y bg-slate-100">
+          <tr class="*:border-black even:bg-slate-200">
+            <td class="border-y">
               <div class="flex gap-2 items-center">
-                <div class="bg-slate-500 size-8"><img src="#" alt="" /></div>
-                <div class="leading-none">
-                  <ruby>
-                    <span class="flex justify-between w-[70px]">
-                      {#each unit.surname_kanji as kanji}
-                        <span>{kanji}</span>
-                      {/each}
-                    </span>
-                    <rt class="relative top-1">{unit.surname_kana}</rt>
-                  </ruby><span class="mx-2">{unit.name}</span>
+                <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
+                <div class="flex-1">
+                  <ruby calss="text-sm">
+                    {unit.surname_kanji}
+                    <rt>{unit.surname_kana}</rt>
+                  </ruby>
                 </div>
               </div>
             </td>
+            <td class="border-y text-left px-2 align-bottom">{unit.name}</td>
             <td
-              class="border-y pr-2 text-[8px] font-bold text-left align-bottom bg-slate-100"
+              class="border-y px-2 text-[8px] font-bold align-bottom leading-normal"
             >
               {unit.outfit}
             </td>
             <td class="px-2 border">{unit.school}</td>
             <td class="px-2 border">{unit.club}</td>
-            <td class="px-2 border font-bold bg-slate-50 {unit.role}">
+            <td class="px-2 border font-bold {unit.role}">
               {unit.role}
             </td>
             <CombatD type={unit.attack_type} />
@@ -70,7 +67,9 @@
             <td class="px-2 border">{unit.class}</td>
             <td class="border">{unit.weapon_type}</td>
             <td class="border">{unit.cover ? "○" : "×"}</td>
-            <td class="border italic text-neutral-50 bg-[rgb(43,68,101)]">
+            <td
+              class="border italic font-medium text-neutral-50 bg-[rgb(43,68,101)]"
+            >
               {unit.position}
             </td>
             <TerrainD affinity={unit.city_affinity} />
