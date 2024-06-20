@@ -10,11 +10,11 @@
 <div class="mx-4">
   <div class="h-20 mt-4 bg-slate-400"></div>
   <!-- filter -->
-  <div class="overflow-x-auto mt-4 pb-4 bg-slate-300">
-    <table class="w-max text-sm">
+  <div class="overflow-x-auto my-4 bg-slate-100">
+    <table class="border border-black w-max text-sm">
       <thead class="sticky top-0">
-        <tr class="*:border *:border-black *:h-8 *:bg-slate-300">
-          <th class="sticky left-0">生徒</th>
+        <tr class="*:border *:border-black *:h-8 *:bg-slate-100">
+          <th colspan="2">生徒</th>
           <th>学校</th>
           <th>部活</th>
           <th>役割</th>
@@ -31,18 +31,18 @@
           <th>NS</th>
           <th>SS</th>
           <th colspan="3">装備</th>
-          <th>特大</th>
-          <th>大</th>
           <th class="px-2">募集</th>
           <th>実装日</th>
+          <th>特大</th>
+          <th>大</th>
         </tr>
       </thead>
       <tbody class="text-center">
-        {#each rows as unit (unit.outfit + unit.name)}
-          <tr class="*:border *:border-black">
-            <td class="sticky left-0 pr-2 bg-slate-300">
+        {#each rows as unit (unit.name + unit.outfit)}
+          <tr class="*:border-black">
+            <td class="border-y bg-slate-100">
               <div class="flex gap-2 items-center">
-                <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
+                <div class="bg-slate-500 size-8"><img src="#" alt="" /></div>
                 <div class="leading-none">
                   <ruby>
                     <span class="flex justify-between w-[70px]">
@@ -51,45 +51,46 @@
                       {/each}
                     </span>
                     <rt class="relative top-1">{unit.surname_kana}</rt>
-                  </ruby><span class="mx-2">{unit.name}</span><span
-                    class="text-[8px] font-bold text-gray-700"
-                  >
-                    {unit.outfit}
-                  </span>
+                  </ruby><span class="mx-2">{unit.name}</span>
                 </div>
               </div>
             </td>
-            <td class="px-2">{unit.school}</td>
-            <td class="px-2">{unit.club}</td>
-            <td class="px-2 font-bold {unit.role}">
+            <td
+              class="border-y pr-2 text-[8px] font-bold text-left align-bottom bg-slate-100"
+            >
+              {unit.outfit}
+            </td>
+            <td class="px-2 border">{unit.school}</td>
+            <td class="px-2 border">{unit.club}</td>
+            <td class="px-2 border font-bold bg-slate-50 {unit.role}">
               {unit.role}
             </td>
             <CombatD type={unit.attack_type} />
             <CombatD type={unit.defense_type} />
-            <td class="px-2">{unit.class}</td>
-            <td>{unit.weapon_type}</td>
-            <td>{unit.cover ? "○" : "×"}</td>
-            <td class="italic text-neutral-50 bg-[rgb(43,68,101)]">
+            <td class="px-2 border">{unit.class}</td>
+            <td class="border">{unit.weapon_type}</td>
+            <td class="border">{unit.cover ? "○" : "×"}</td>
+            <td class="border italic text-neutral-50 bg-[rgb(43,68,101)]">
               {unit.position}
             </td>
             <TerrainD affinity={unit.city_affinity} />
             <TerrainD affinity={unit.field_affinity} />
             <TerrainD affinity={unit.indoor_affinity} />
-            <td>EX</td>
-            <td>NS</td>
-            <td>SS</td>
-            <td class="w-20">{unit.equipment_first}</td>
-            <td class="w-20">{unit.equipment_second}</td>
-            <td class="w-20">{unit.equipment_third}</td>
-            <td>exgift</td>
-            <td>gift</td>
-            <td>{unit.recruit}</td>
-            <td class="px-2">
+            <td class="border">EX</td>
+            <td class="border">NS</td>
+            <td class="border">SS</td>
+            <td class="w-24 border">{unit.equipment_first}</td>
+            <td class="w-24 border">{unit.equipment_second}</td>
+            <td class="w-24 border">{unit.equipment_third}</td>
+            <td class="border">{unit.recruit}</td>
+            <td class="px-2 border">
               {unit.release_date
                 ?.toISOString()
                 .slice(0, 10)
                 .replaceAll("-", "/")}
             </td>
+            <td class="border">exgift</td>
+            <td class="border">gift</td>
           </tr>
         {/each}
       </tbody>
