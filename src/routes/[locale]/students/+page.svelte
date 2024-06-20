@@ -14,7 +14,7 @@
     <table class="border border-black w-max text-sm">
       <thead class="sticky top-0">
         <tr class="*:border *:border-black *:h-8 *:bg-slate-300">
-          <th colspan="3">生徒</th>
+          <th colspan="2">生徒</th>
           <th>学校</th>
           <th>部活</th>
           <th>役割</th>
@@ -40,22 +40,23 @@
       <tbody class="text-center">
         {#each rows as unit (unit.name + unit.outfit)}
           <tr class="*:border-black even:bg-slate-200">
-            <td class="border-y">
+            <td class="border-y p-0">
               <div class="flex gap-2 items-center">
                 <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
-                <div class="flex-1">
-                  <ruby calss="text-sm">
-                    {unit.surname_kanji}
-                    <rt>{unit.surname_kana}</rt>
+                <div class="flex-1 text-right leading-none">
+                  <ruby class="text-[10px] font-bold">
+                    {unit.surname_kanji}<rt>{unit.surname_kana}</rt>
                   </ruby>
                 </div>
               </div>
             </td>
-            <td class="border-y text-left px-2 align-bottom">{unit.name}</td>
-            <td
-              class="border-y px-2 text-[8px] font-bold align-bottom leading-normal"
-            >
-              {unit.outfit}
+            <td class="border-y p-0 pr-2">
+              <div class="flex justify-between gap-2">
+                <span>{unit.name}</span>
+                <span class="text-[8px] font-bold">
+                  {unit.outfit}
+                </span>
+              </div>
             </td>
             <td class="px-2 border">{unit.school}</td>
             <td class="px-2 border">{unit.club}</td>
@@ -123,9 +124,11 @@
 
 <style>
   .STRIKER {
-    color: #cc4125;
+    /* color: #cc4125; */
+    color: #fc5022;
   }
   .SPECIAL {
-    color: #1155cc;
+    /* color: #1155cc; */
+    color: #007df5;
   }
 </style>
