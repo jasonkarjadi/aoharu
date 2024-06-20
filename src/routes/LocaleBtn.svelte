@@ -4,8 +4,8 @@
 
 <a
   href="/{locale.toLowerCase()}"
-  class="rounded-full border-2 text-center flex flex-col justify-center items-center w-24 h-24 text-white bg-slate-500 border-white"
+  class="rounded-full border text-center flex flex-col justify-center items-center size-16 text-white bg-slate-500 border-white hover:bg-slate-500/75"
 >
-  <h2 class="text-xl"><slot /></h2>
-  <span class="text-xs">{locale.toUpperCase()}</span>
+  <p class="border-b text-sm"><slot /></p>
+  <span class="uppercase text-[10px] leading-none">{locale}</span>
 </a>

@@ -3,11 +3,15 @@
 </script>
 
 <div
-  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-8 rounded py-16 px-24 bg-neutral-700"
+  class="bg-[url('/character_bk.png')] bg-center w-screen xl:w-[calc(100vw-17px)] h-dvh flex justify-center items-center"
 >
-  <img src="/bluearchive.png" alt="青春" />
-  <div class="flex gap-4">
-    <LocaleBtn locale="jpn">日本語</LocaleBtn>
-    <LocaleBtn locale="eng">English</LocaleBtn>
+  <div class="rounded py-8 px-8 w-72 bg-neutral-700">
+    <div class="flex justify-center items-center pb-4">
+      <img src="/bluearchive.png" alt="青春" />
+    </div>
+    <div class="flex gap-4 justify-center">
+      <LocaleBtn locale="jpn">日本語</LocaleBtn>
+      <LocaleBtn locale="eng">English</LocaleBtn>
+    </div>
   </div>
 </div>
