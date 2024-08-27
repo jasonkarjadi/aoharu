@@ -1,10 +1,10 @@
 <script>
-  import CombatD from "./CombatD.svelte";
-  import TerrainD from "./TerrainD.svelte";
+  import { page } from "$app/stores";
+  import CombatD from "$lib/components/CombatD.svelte";
+  import TerrainD from "$lib/components/TerrainD.svelte";
 
   export let data;
   let { rows } = data;
-  // console.log(rows);
 </script>
 
 <div class="mx-4">
@@ -63,8 +63,14 @@
             <td class="px-2 border font-bold {unit.role}">
               {unit.role}
             </td>
-            <CombatD type={unit.attack_type} />
-            <CombatD type={unit.defense_type} />
+            <CombatD
+              type={unit.attack_type}
+              text={unit[`attack_type_${$page.params.locale}`]}
+            />
+            <CombatD
+              type={unit.defense_type}
+              text={unit[`defense_type_${$page.params.locale}`]}
+            />
             <td class="px-2 border">{unit.class}</td>
             <td class="border">{unit.weapon_type}</td>
             <td class="border">{unit.cover ? "○" : "×"}</td>

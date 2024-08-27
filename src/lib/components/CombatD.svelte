@@ -1,8 +1,9 @@
 <script>
   export let type;
+  export let text;
 </script>
 
-<td class="border text-neutral-50 {type}">{type}</td>
+<td class="border text-neutral-50 font-medium {type}">{text}</td>
 
 <style>
   .爆発,
