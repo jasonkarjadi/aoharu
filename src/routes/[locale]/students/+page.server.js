@@ -28,7 +28,10 @@ export const load = async ({ params }) => {
     equipment_third (id, name:name_${locale}),
     type_recruitment (name:name_${locale}),
     rarity,
-    release_date_jpn
+    release_date_jpn,
+    urban_affinity:urban_affinity_id (id, name),
+    outdoor_affinity:outdoor_affinity_id (id, name),
+    indoor_affinity:indoor_affinity_id (id, name)
   `);
 
   return { students: data ?? [], error };

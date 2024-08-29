@@ -1,7 +1,7 @@
 <script>
   import { page } from "$app/stores";
   import CombatD from "$lib/components/CombatD.svelte";
-  // import TerrainD from "$lib/components/TerrainD.svelte";
+  import TerrainD from "$lib/components/TerrainD.svelte";
 
   export let data;
   let { students, error } = data;
@@ -83,12 +83,9 @@
             >
               {type_weapon.combat_position.name}
             </td>
-            <!-- <TerrainD affinity={student.city_affinity} />
-            <TerrainD affinity={student.field_affinity} />
-            <TerrainD affinity={student.indoor_affinity} /> -->
-            <td class="border URBAN"></td>
-            <td class="border OUTDOOR"></td>
-            <td class="border INDOOR"></td>
+            <TerrainD affinity={student.urban_affinity} />
+            <TerrainD affinity={student.outdoor_affinity} />
+            <TerrainD affinity={student.indoor_affinity} />
             <td class="border EX"></td>
             <td class="border NS"></td>
             <td class="border SS"></td>
