@@ -40,9 +40,6 @@
       </thead>
       <tbody class="text-center">
         {#each students as student (student.id)}
-          {@const { student_profile, student_outfit } = student}
-          {@const { student_name, student_surname, type_weapon } =
-            student_profile}
           <tr class="*:border-black even:bg-slate-200">
             <td class="border-y p-0">
               <div class="flex gap-2 items-center">
@@ -50,11 +47,9 @@
                 <div class="flex-1 text-right leading-none">
                   <ruby class="text-[10px] font-bold">
                     {#if $page.params.locale === "jpn"}
-                      {student_surname.name.kanji}<rt
-                        >{student_surname.name.kana}</rt
-                      >
+                      {student.surname.kanji}<rt>{student.surname.kana}</rt>
                     {:else}
-                      {student_surname.name}
+                      {student.surname.name}
                     {/if}
                   </ruby>
                 </div>
@@ -62,26 +57,26 @@
             </td>
             <td class="border-y p-0 pr-2">
               <div class="flex justify-between gap-2">
-                <span>{student_name.name}</span>
+                <span>{student.name}</span>
                 <span class="text-[8px] font-bold">
-                  {student_outfit.name}
+                  {student.outfit.name}
                 </span>
               </div>
             </td>
-            <td class="px-2 border">{student_profile.school.name}</td>
-            <td class="px-2 border">{student_profile.school_club.name}</td>
-            <td class="px-2 border font-bold {student.combat_role.name}">
-              {student.combat_role.name}
+            <td class="px-2 border">{student.school}</td>
+            <td class="px-2 border">{student.club}</td>
+            <td class="px-2 border font-bold {student.role}">
+              {student.role}
             </td>
             <CombatD type={student.type_attack} />
             <CombatD type={student.type_defense} />
-            <td class="px-2 border">{student.combat_class.name}</td>
-            <td class="border">{type_weapon.name}</td>
+            <td class="px-2 border">{student.class}</td>
+            <td class="border">{student.type_weapon}</td>
             <td class="border">{student.cover ? "○" : "×"}</td>
             <td
               class="border italic font-medium text-neutral-50 bg-[rgb(43,68,101)]"
             >
-              {type_weapon.combat_position.name}
+              {student.position}
             </td>
             <TerrainD affinity={student.urban_affinity} />
             <TerrainD affinity={student.outdoor_affinity} />
@@ -92,7 +87,7 @@
             <td class="w-24 border">{student.equipment_first.name}</td>
             <td class="w-24 border">{student.equipment_second.name}</td>
             <td class="w-24 border">{student.equipment_third.name}</td>
-            <td class="border">{student.type_recruitment.name}</td>
+            <td class="border">{student.recruitment}</td>
             <td class="px-2 border">
               {student.release_date_jpn}
             </td>
