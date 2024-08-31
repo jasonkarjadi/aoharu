@@ -1,5 +1,4 @@
 <script>
-  import { page } from "$app/stores";
   import CombatD from "$lib/components/CombatD.svelte";
   import TerrainD from "$lib/components/TerrainD.svelte";
 
@@ -43,10 +42,10 @@
                 <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
                 <div class="flex-1 text-right leading-none">
                   <ruby class="text-[10px] font-bold">
-                    {#if $page.params.locale === "jpn"}
-                      {student.surname.kanji}<rt>{student.surname.kana}</rt>
-                    {:else}
+                    {#if Object.hasOwn(student.surname, "name")}
                       {student.surname.name}
+                    {:else}
+                      {student.surname.kanji}<rt>{student.surname.kana}</rt>
                     {/if}
                   </ruby>
                 </div>
@@ -75,7 +74,7 @@
             >
               {student.position}
             </td>
-            <TerrainD affinity={student.urban_affinity} />
+            <TerrainD affinity={student.street_affinity} />
             <TerrainD affinity={student.outdoor_affinity} />
             <TerrainD affinity={student.indoor_affinity} />
             <td class="w-24 border">{student.equipment_first.name}</td>

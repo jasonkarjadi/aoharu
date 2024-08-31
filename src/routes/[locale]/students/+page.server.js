@@ -29,7 +29,7 @@ export const load = async ({ params }) => {
     ...type_recruitment (recruitment:name_${locale}),
     rarity,
     release_date_jpn,
-    urban_affinity:urban_affinity_id (id, name),
+    street_affinity:street_affinity_id (id, name),
     outdoor_affinity:outdoor_affinity_id (id, name),
     indoor_affinity:indoor_affinity_id (id, name)
   `);
