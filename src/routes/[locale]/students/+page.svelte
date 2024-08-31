@@ -28,9 +28,6 @@
           <th class="w-16">市街地</th>
           <th class="w-16">屋外</th>
           <th class="w-16">屋内</th>
-          <th>EX</th>
-          <th>NS</th>
-          <th>SS</th>
           <th colspan="3">装備</th>
           <th class="px-2">募集</th>
           <th>実装日</th>
@@ -81,9 +78,6 @@
             <TerrainD affinity={student.urban_affinity} />
             <TerrainD affinity={student.outdoor_affinity} />
             <TerrainD affinity={student.indoor_affinity} />
-            <td class="border EX"></td>
-            <td class="border NS"></td>
-            <td class="border SS"></td>
             <td class="w-24 border">{student.equipment_first.name}</td>
             <td class="w-24 border">{student.equipment_second.name}</td>
             <td class="w-24 border">{student.equipment_third.name}</td>
