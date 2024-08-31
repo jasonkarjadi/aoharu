@@ -21,7 +21,7 @@
         <NavLink link="students">生徒</NavLink>
         <NavLink link="schools">学園</NavLink>
         <NavLink link="logs">履歴</NavLink>
-        <NavLink link="bosses">強敵</NavLink>
+        <NavLink link="bosses">敵将</NavLink>
       </nav>
       <div class="flex w-24 justify-evenly">
         <button
