@@ -72,7 +72,7 @@
             <td
               class="border italic font-medium text-neutral-50 bg-[rgb(43,68,101)]"
             >
-              {student.position}
+              {student.role === "SPECIAL" ? "BACK" : student.position}
             </td>
             <TerrainD affinity={student.street_affinity} />
             <TerrainD affinity={student.outdoor_affinity} />
