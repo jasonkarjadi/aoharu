@@ -42,8 +42,8 @@
                 <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
                 <div class="flex-1 text-right leading-none">
                   <ruby class="text-[10px] font-bold">
-                    {#if Object.hasOwn(student.surname, "name")}
-                      {student.surname.name}
+                    {#if typeof student.surname === "string"}
+                      {student.surname}
                     {:else}
                       {student.surname.kanji}<rt>{student.surname.kana}</rt>
                     {/if}
