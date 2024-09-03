@@ -1,15 +1,18 @@
-import { supabase } from "$lib/supabaseClient.js";
+import { supabase } from "../../../lib/supabaseClient.js";
 
 /** @type {import('@sveltejs/kit').ServerLoad} */
 export const load = async ({ params }) => {
   const { locale } = params;
-  const { data, error } = await supabase.from("student").select(`
+  const { data, error } = await supabase
+    .from("student")
+    .select(
+      `
     id,
     ...student_profile (
       profile_id:id,
       ...student_name (name:name_${locale}), 
       ...student_surname (surname:name_${locale}), 
-      ...school (school:name_${locale}),
+      school (id, name:name_${locale}),
       ...school_club (club:name_${locale}),
       ...type_weapon (type_weapon:name, ...combat_position (position:name)),
       school_year,
@@ -19,7 +22,8 @@ export const load = async ({ params }) => {
     ),
     outfit:student_outfit (id, name:name_${locale}),
     ...combat_role (role:name),
-    ...combat_class (class:name_${locale}),
+    class_first:class_first_id (id, name:name_${locale}),
+    class_second:class_second_id (id, name:name_${locale}),
     type_attack (id, name:name_${locale}),
     type_defense (id, name:name_${locale}),
     cover,
@@ -31,8 +35,11 @@ export const load = async ({ params }) => {
     release_date_jpn,
     street_affinity:street_affinity_id (id, name),
     outdoor_affinity:outdoor_affinity_id (id, name),
-    indoor_affinity:indoor_affinity_id (id, name)
-  `);
+    indoor_affinity:indoor_affinity_id (id, name),
+    favourite
+  `
+    )
+    .order("id");
 
   return { students: data ?? [], error };
 };
