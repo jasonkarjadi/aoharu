@@ -1,4 +1,4 @@
-import { supabase } from "../../../lib/supabaseClient.js";
+import { supabase } from "$lib/supabaseClient.js";
 
 /** @type {import('@sveltejs/kit').ServerLoad} */
 export const load = async ({ params }) => {
@@ -36,10 +36,29 @@ export const load = async ({ params }) => {
     street_affinity:street_affinity_id (id, name),
     outdoor_affinity:outdoor_affinity_id (id, name),
     indoor_affinity:indoor_affinity_id (id, name),
-    favourite
+    favourite,
+    upgrade:student_weapon_tier_three_terrain (terrain_id, ...terrain_affinity (affinity:name))
   `
     )
     .order("id");
 
-  return { students: data ?? [], error };
+  return {
+    students:
+      data?.map((student) => {
+        switch (student.upgrade?.terrain_id) {
+          case 1:
+            student.street_affinity.name += ` (${student.upgrade.affinity})`;
+            break;
+          case 2:
+            student.outdoor_affinity.name += ` (${student.upgrade.affinity})`;
+            break;
+          case 3:
+            student.indoor_affinity.name += ` (${student.upgrade.affinity})`;
+            break;
+        }
+        delete student.upgrade;
+        return student;
+      }) ?? [],
+    error,
+  };
 };
