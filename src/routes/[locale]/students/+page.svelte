@@ -1,6 +1,7 @@
 <script>
-  import CombatD from "$lib/components/CombatD.svelte";
-  import TerrainD from "$lib/components/TerrainD.svelte";
+  import ColEquipment from "./ColEquipment.svelte";
+  import ColTerrain from "./ColTerrain.svelte";
+  import ColType from "./ColType.svelte";
 
   export let data;
   let { students, error } = data;
@@ -69,8 +70,8 @@
             <td class="px-2 border font-bold {student.role}">
               {student.role}
             </td>
-            <CombatD type={student.type_attack} />
-            <CombatD type={student.type_defense} />
+            <ColType type={student.attack} />
+            <ColType type={student.defense} />
             <td class="px-2 border text-left text-[10px] leading-none py-0">
               <div class="w-3 float-left mr-1">
                 <img
@@ -99,40 +100,16 @@
             >
               {student.role === "SPECIAL" ? "BACK" : student.position}
             </td>
-            <TerrainD affinity={student.street_affinity} />
-            <TerrainD affinity={student.outdoor_affinity} />
-            <TerrainD affinity={student.indoor_affinity} />
-            <td class="px-2 w-24 border text-left text-[10px]">
-              <div class="w-5 float-left mr-1 mt-0.5">
-                <img
-                  src="/equipments/1_{student.equipment_first.id}.png"
-                  alt=""
-                />
-              </div>
-              {student.equipment_first.name}
-            </td>
-            <td class="px-2 w-24 border text-left text-[10px]">
-              <div class="w-5 float-left mr-1 mt-0.5">
-                <img
-                  src="/equipments/2_{student.equipment_second.id}.png"
-                  alt=""
-                />
-              </div>
-              {student.equipment_second.name}
-            </td>
-            <td class="px-2 w-24 border text-left text-[10px]">
-              <div class="w-5 float-left mr-1 mt-0.5">
-                <img
-                  src="/equipments/3_{student.equipment_third.id}.png"
-                  alt=""
-                />
-              </div>
-              {student.equipment_third.name}
-            </td>
-            <td class="px-1 border">
+            <ColTerrain affinity={student.street_affinity} />
+            <ColTerrain affinity={student.outdoor_affinity} />
+            <ColTerrain affinity={student.indoor_affinity} />
+            <ColEquipment terrain_id={1} equipment={student.equipment_first} />
+            <ColEquipment terrain_id={2} equipment={student.equipment_second} />
+            <ColEquipment terrain_id={3} equipment={student.equipment_third} />
+            <td class="px-1 border" class:bg-slate-500={!student.favourite}>
               {#if student.favourite}
                 <div class="w-5">
-                  <img src="/favorites/{student.id}.png" alt="♡" />
+                  <img src="/favourites/{student.id}.png" alt="♡" />
                 </div>
               {/if}
             </td>
