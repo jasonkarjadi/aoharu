@@ -109,7 +109,7 @@
             <td class="px-1 border" class:bg-slate-500={!student.favourite}>
               {#if student.favourite}
                 <div class="w-5">
-                  <img src="/favourites/{student.id}.png" alt="♡" />
+                  <img src="/favourites/{student.id}.png" alt={student.name} />
                 </div>
               {/if}
             </td>

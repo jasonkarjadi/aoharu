@@ -37,7 +37,7 @@ export const load = async ({ params }) => {
     outdoor_affinity:outdoor_affinity_id (id, name),
     indoor_affinity:indoor_affinity_id (id, name),
     favourite,
-    upgrade:student_weapon_tier_three_terrain (terrain_id, ...terrain_affinity (affinity:name))
+    upgrade:student_weapon_tier_three_terrain (terrain_id, terrain_affinity (id, name))
   `
     )
     .order("id");
@@ -47,13 +47,13 @@ export const load = async ({ params }) => {
       data?.map((student) => {
         switch (student.upgrade?.terrain_id) {
           case 1:
-            student.street_affinity.name += ` (${student.upgrade.affinity})`;
+            student.street_affinity.upgrade = student.upgrade.terrain_affinity;
             break;
           case 2:
-            student.outdoor_affinity.name += ` (${student.upgrade.affinity})`;
+            student.outdoor_affinity.upgrade = student.upgrade.terrain_affinity;
             break;
           case 3:
-            student.indoor_affinity.name += ` (${student.upgrade.affinity})`;
+            student.indoor_affinity.upgrade = student.upgrade.terrain_affinity;
             break;
         }
         delete student.upgrade;

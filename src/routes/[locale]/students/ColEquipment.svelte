@@ -2,9 +2,9 @@
   export let terrain_id, equipment;
 </script>
 
-<td class="px-2 w-24 border text-left text-[10px]">
-  <div class="w-5 float-left mr-1 mt-0.5">
+<td class="w-8 border text-[5px] font-bold leading-none p-0">
+  <div class="w-5 mx-auto">
     <img src="/equipments/{terrain_id}_{equipment.id}.png" alt="" />
   </div>
-  {equipment.name}
+  <span>{equipment.name}</span>
 </td>
