@@ -1,4 +1,5 @@
 <script>
+  import ColArtifact from "./ColArtifact.svelte";
   import ColEquipment from "./ColEquipment.svelte";
   import ColTerrain from "./ColTerrain.svelte";
   import ColType from "./ColType.svelte";
@@ -113,8 +114,8 @@
                 </div>
               {/if}
             </td>
-            <td class="px-2 border artifact"></td>
-            <td class="px-2 border artifact2"></td>
+            <ColArtifact artifact={student.artifact?.first} />
+            <ColArtifact artifact={student.artifact?.second} />
             <td class="border exgift"></td>
             <td class="border gift"></td>
             <td class="px-2 border">{student.recruitment}</td>

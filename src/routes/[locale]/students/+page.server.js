@@ -37,7 +37,8 @@ export const load = async ({ params }) => {
     outdoor_affinity:outdoor_affinity_id (id, name),
     indoor_affinity:indoor_affinity_id (id, name),
     favourite,
-    upgrade:student_weapon_tier_three_terrain (terrain_id, terrain_affinity (id, name))
+    upgrade:student_weapon_tier_three_terrain (terrain_id, terrain_affinity (id, name)),
+    artifact:student_artifact (first:artifact_first_id (id, name:name_${locale}), second:artifact_second_id (id, name:name_${locale})))
   `
     )
     .order("id");
