@@ -14,7 +14,7 @@ export const load = async ({ params }) => {
       ...student_surname (surname:name_${locale}), 
       school (id, name:name_${locale}),
       ...school_club (club:name_${locale}),
-      ...type_weapon (type_weapon:name, ...combat_position (position:name)),
+      ...type_weapon (weapon:name, ...combat_position (position:name)),
       school_year,
       age_year,
       height_cm,

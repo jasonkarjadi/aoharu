@@ -26,9 +26,24 @@
           <th class="px-2">武器</th>
           <th class="px-2">遮蔽</th>
           <th class="px-2">ポジション</th>
-          <th class="w-16">市街地</th>
-          <th class="w-16">屋外</th>
-          <th class="w-16">屋内</th>
+          <th class="w-10 text-[8px] leading-none">
+            <div class="w-4 mx-auto">
+              <img src="/wikiassets/terrains/1.png" alt="" />
+            </div>
+            市街地
+          </th>
+          <th class="w-10 text-[8px] leading-none">
+            <div class="w-4 mx-auto">
+              <img src="/wikiassets/terrains/2.png" alt="" />
+            </div>
+            屋外
+          </th>
+          <th class="w-10 text-[8px] leading-none">
+            <div class="w-4 mx-auto">
+              <img src="/wikiassets/terrains/3.png" alt="" />
+            </div>
+            屋内
+          </th>
           <th colspan="4">装備</th>
           <th colspan="2">オーパーツ</th>
           <th colspan="2">贈り物</th>
@@ -94,7 +109,7 @@
                 {student.class_second.name}
               {/if}
             </td>
-            <td class="border">{student.type_weapon}</td>
+            <td class="border">{student.weapon}</td>
             <td class="border">{student.cover ? "○" : "×"}</td>
             <td
               class="border italic font-medium text-neutral-50 bg-[rgb(43,68,101)]"
@@ -104,9 +119,9 @@
             <ColTerrain affinity={student.street_affinity} />
             <ColTerrain affinity={student.outdoor_affinity} />
             <ColTerrain affinity={student.indoor_affinity} />
-            <ColEquipment terrain_id={1} equipment={student.equipment_first} />
-            <ColEquipment terrain_id={2} equipment={student.equipment_second} />
-            <ColEquipment terrain_id={3} equipment={student.equipment_third} />
+            <ColEquipment slot={1} equipment={student.equipment_first} />
+            <ColEquipment slot={2} equipment={student.equipment_second} />
+            <ColEquipment slot={3} equipment={student.equipment_third} />
             <td class="px-1 border" class:bg-slate-500={!student.favourite}>
               {#if student.favourite}
                 <div class="w-5">
@@ -119,9 +134,7 @@
             <td class="border exgift"></td>
             <td class="border gift"></td>
             <td class="px-2 border">{student.recruitment}</td>
-            <td class="px-2 border">
-              {student.release_date_jpn}
-            </td>
+            <td class="px-2 border">{student.release_date_jpn}</td>
           </tr>
         {/each}
       </tbody>
