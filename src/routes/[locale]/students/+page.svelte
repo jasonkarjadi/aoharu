@@ -28,19 +28,19 @@
           <th class="px-2">ポジション</th>
           <th class="w-10 text-[8px] leading-none">
             <div class="w-4 mx-auto">
-              <img src="/wikiassets/terrains/1.png" alt="" />
+              <img src="/cropped/terrains/1.png" alt="" />
             </div>
             市街地
           </th>
           <th class="w-10 text-[8px] leading-none">
             <div class="w-4 mx-auto">
-              <img src="/wikiassets/terrains/2.png" alt="" />
+              <img src="/cropped/terrains/2.png" alt="" />
             </div>
             屋外
           </th>
           <th class="w-10 text-[8px] leading-none">
             <div class="w-4 mx-auto">
-              <img src="/wikiassets/terrains/3.png" alt="" />
+              <img src="/cropped/terrains/3.png" alt="" />
             </div>
             屋内
           </th>
