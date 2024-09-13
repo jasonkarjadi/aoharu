@@ -17,7 +17,7 @@
     <table class="border border-black w-max text-sm">
       <thead class="sticky top-0">
         <tr class="*:border *:border-black *:h-8 *:bg-slate-300">
-          <th colspan="2">生徒</th>
+          <th colspan="2">名前</th>
           <th colspan="2">所属</th>
           <th>役割</th>
           <th class="w-20">攻撃</th>
