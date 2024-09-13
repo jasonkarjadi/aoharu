@@ -53,10 +53,16 @@
       </thead>
       <tbody class="text-center">
         {#each students as student (student.id)}
-          <tr class="*:border-black even:bg-slate-200">
+          <tr class="*:border-black even:bg-slate-200 group">
             <td class="border-y p-0">
               <div class="flex gap-2 items-center">
-                <div class="bg-slate-500 size-6"><img src="#" alt="" /></div>
+                <div
+                  class="bg-[url('/Field_Item_Dim.png')] bg-contain bg-center relative w-[30.33px] [&>span]:bg-slate-100 [&>span]:group-even:bg-slate-200 [&>span]:w-px [&>span]:h-2 [&>span]:absolute"
+                >
+                  <span class="left-0" />
+                  <img src="/students/{student.id}_Small.png" alt="" />
+                  <span class="bottom-0 right-0" />
+                </div>
                 <div class="flex-1 text-right leading-none">
                   <ruby class="text-[10px] font-bold">
                     {#if typeof student.surname === "string"}
