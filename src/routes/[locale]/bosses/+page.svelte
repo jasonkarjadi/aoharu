@@ -1,75 +1,54 @@
 <script>
+  import BossType from "./BossType.svelte";
+
   export let data;
   let { groups, error } = data;
   $: error && console.error(error);
 </script>
 
-<div class="p-4 overflow-x-auto">
+<div class="p-4 flex gap-x-px text-slate-100">
   {#each groups as group (group.id)}
-    <section class="bg-slate-200 mb-4 last:mb-0 rounded">
-      <h2 class="h-8 py-1 px-2 font-bold uppercase bg-slate-100 rounded-t">
-        {group.name ?? ""}
+    <section>
+      <h2
+        class="py-2 text-center mb-2 font-bold uppercase bg-slate-700 rounded text-xl"
+      >
+        {group.name ?? " "}
       </h2>
-      <div class="flex gap-8 px-8 py-1">
+      <div class="w-fit p-2 bg-slate-200/75 rounded mx-2">
         {#each group.bosses as boss (boss.id)}
-          <div class="pl-20 bg-slate-400 relative">
-            <div class="w-80">
+          <div
+            class="rounded-lg border border-white shadow-[0_2px_black] relative mb-2 pr-36 bg-contain bg-no-repeat bg-slate-100"
+            style="background-image: url(/bosses/{boss.id}BG.png);"
+          >
+            <div class="w-96 relative translate-x-1/3">
               <img src="/bosses/{boss.id}.png" alt="" />
-              <div class="absolute bg-slate-700/50 inset-0 z-10">
-                <h3
-                  class="uppercase text-2xl absolute top-1 left-1 z-20 font-bold [text-shadow:0_0_1px_white]"
-                >
-                  {boss.name}
-                </h3>
+            </div>
+            <div class="absolute left-2 right-1 bottom-1">
+              <h3
+                class="uppercase text-3xl font-bold [text-shadow:0_0_1px_black] italic"
+              >
+                {boss.name}
+              </h3>
+              <div class="flex gap-x-0.5 mb-1 justify-end">
+                {#each boss.terrain_ids as terrain_id (terrain_id)}
+                  <div class="w-8">
+                    <img src="/cropped/terrains/{terrain_id}.png" alt="" />
+                  </div>
+                {/each}
               </div>
-              <div class="absolute bottom-1 right-1 z-20">
-                <div
-                  class="flex gap-x-px bg-slate-200 p-px border border-slate-700 w-16 mb-px ml-auto"
-                >
-                  <div class="size-6 bg-slate-200">
-                    <img src="#" alt="" />
-                  </div>
-                  <div class="size-6 bg-slate-200">
-                    <img src="#" alt="" />
-                  </div>
-                </div>
-                <div
-                  class="flex gap-x-px bg-slate-200 p-px border border-slate-700 text-white [text-shadow:0_0_1px_black]"
-                >
-                  <div class="flex">
-                    <div class="w-6 bg-slate-400"></div>
-                    <p class="px-2 py-px {boss.attack_type.id}">
-                      {boss.attack_type.name}
-                    </p>
-                  </div>
-                  <div class="flex">
-                    <div class="w-6 bg-slate-400"></div>
-                    <p class="px-2 py-px {boss.defense_type.id}">
-                      {boss.defense_type.name}
-                    </p>
-                  </div>
-                </div>
+              <div
+                class="flex gap-x-0.5 rounded text-center font-medium [text-shadow:0_0_1px_black] justify-end"
+              >
+                <BossType type={boss.attack} />
+                <BossType type={boss.defense} />
               </div>
             </div>
-            <!-- <p class="uppercase">{boss.name}</p> -->
+            <div
+              class="absolute bg-slate-700/50 hover:bg-transparent inset-0 z-10 rounded-lg"
+            />
           </div>
         {/each}
       </div>
     </section>
   {/each}
 </div>
-
-<style>
-  .\31 {
-    background-color: #86000b;
-  }
-  .\32 {
-    background-color: #bb7d10;
-  }
-  .\33 {
-    background-color: #1f6095;
-  }
-  .\34 {
-    background-color: #9743a3;
-  }
-</style>
